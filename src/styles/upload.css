@@ -1,0 +1,275 @@
+/* ============================================
+   Upload & Parsing Screens
+   ============================================ */
+
+/* --- Upload Screen --- */
+.upload-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    padding: var(--space-xl);
+    padding-top: calc(var(--space-3xl) + env(safe-area-inset-top, 0px));
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl) var(--space-xl);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+    min-height: 300px;
+    background: var(--color-surface);
+}
+
+.upload-zone:hover,
+.upload-zone.drag-over {
+    border-color: var(--color-accent);
+    background: var(--color-accent-dim);
+}
+
+.upload-zone.drag-over {
+    transform: scale(1.01);
+    box-shadow: var(--shadow-glow);
+}
+
+.upload-zone-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-xl);
+    background: var(--color-accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: var(--space-xl);
+    transition: transform var(--transition-base);
+}
+
+.upload-zone:hover .upload-zone-icon {
+    transform: translateY(-4px);
+}
+
+.upload-zone h3 {
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.upload-zone p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-base);
+}
+
+.upload-browse {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: var(--text-sm);
+}
+
+.upload-help {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-xl);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.upload-help:hover {
+    color: var(--color-text-secondary);
+}
+
+.upload-file-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+    padding: var(--space-base);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+    margin-top: var(--space-lg);
+    width: 100%;
+}
+
+.upload-file-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.upload-file-name {
+    flex: 1;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.upload-file-size {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.upload-file-remove {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: all var(--transition-fast);
+    font-size: 14px;
+}
+
+.upload-file-remove:hover {
+    background: var(--color-danger-dim);
+    color: var(--color-danger);
+}
+
+/* --- Password Modal --- */
+.password-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: var(--space-xl);
+}
+
+.password-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.password-modal-content {
+    position: relative;
+    background: var(--color-surface);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    padding: var(--space-2xl);
+    width: 100%;
+    max-width: var(--max-width);
+    animation: fadeInUp 0.3s var(--ease-out);
+}
+
+.password-input {
+    width: 100%;
+    padding: var(--space-base);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    margin: var(--space-lg) 0;
+    transition: border-color var(--transition-fast);
+}
+
+.password-input:focus {
+    border-color: var(--color-accent);
+}
+
+/* --- Parsing Progress Screen --- */
+.parsing-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+.parsing-animation {
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--space-3xl);
+    position: relative;
+}
+
+.parsing-ring {
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--color-border-light);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+}
+
+.parsing-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    animation: float 2s ease-in-out infinite;
+}
+
+.parsing-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    width: 100%;
+    max-width: 280px;
+}
+
+.parsing-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    transition: all var(--transition-base);
+}
+
+.parsing-step.active {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.parsing-step.done {
+    color: var(--color-accent);
+}
+
+.parsing-step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    flex-shrink: 0;
+    transition: all var(--transition-base);
+}
+
+.parsing-step.active .parsing-step-dot {
+    background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent-glow);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.parsing-step.done .parsing-step-dot {
+    background: var(--color-accent);
+}
