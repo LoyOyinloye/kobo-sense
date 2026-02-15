@@ -34,20 +34,21 @@
     rel="stylesheet" />
 
   <!-- Styles -->
-  <script type="module" crossorigin src="./assets/index-DmkzvxyP.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Bg3A-DjW.css">
+  <script type="module" crossorigin src="./assets/index-DLPgcsIX.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BiR0Oj0g.css">
 </head>
 
 <body>
   <div id="app"></div>
 
-  <!-- Service Worker Registration -->
+  <!-- Service Worker Cleanup (Force Update) -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('[KoboSense] SW registered:', reg.scope))
-          .catch(err => console.warn('[KoboSense] SW registration failed:', err));
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+          console.log('SW Unregistered to force update');
+        }
       });
     }
   </script>
